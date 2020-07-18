@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/DrawingToolConsole/bin/Debug
+/DrawingToolConsole/obj/Debug
+/DrawingToolConsole/.vs/DrawingToolConsole/v16

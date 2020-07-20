@@ -1,0 +1,33 @@
+﻿@model DrawingTool.MVC.ViewModels.DrawViewModel
+    <div class="drawing-form">
+        <div class="form-card">
+            @using (Html.BeginRouteForm(
+            "Generate Draw",
+            new { controller = "DrawForm", action = "GenerateDraw" },
+            FormMethod.Post,
+            new { enctype = "multipart/form-data", onsubmit = "validateForm();" }
+        ))
+            {
+                @Html.AntiForgeryToken();
+                <label class="file-input">
+                    <input type="file" id="draw-input" name="DrawCommands" accept=".txt" required />
+                    Select File
+                </label>
+                <div id="file-name">
+
+                </div>
+                <button disabled class="button-form" type="submit">Get Output</button>
+            }
+        </div>
+        @if (ViewData.ModelState.Values.Any(x => x.Errors.Any()))
+        {
+            string messages = string.Join("", ViewData.ModelState.Values
+            .SelectMany(x => x.Errors)
+            .Select(x => x.ErrorMessage));
+            <p class="Errors">@Html.Raw(messages)</p>
+        }
+    </div>
+
+@section scripts{
+    <script src="~/js/fromValidation.js"></script>
+}

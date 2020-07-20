@@ -5,3 +5,9 @@
 /DrawingToolConsole/bin/Debug
 /DrawingToolConsole/obj/Debug
 /DrawingToolConsole/.vs/DrawingToolConsole/v16
+/DrawingTool.MVC/bin
+/DrawingTool.MVC/obj/Debug
+/DrawingTool.MVC/packages
+/DrawingTool.Test/bin/Debug/net472
+/DrawingTool.Test/obj
+/DrawingTool.MVC.rar

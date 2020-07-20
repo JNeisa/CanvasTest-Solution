@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Drawing Tool Application</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="~/css/main.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="navbar-header">
+                @Html.ActionLink("Drawing Tool", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div>
+                <a class="btn draw-form-button" href="@Url.RouteUrl("Draw Form")">Try It!</a>
+            </div>
+        </nav>
+    </header>
+    <main class="main-container">
+        @RenderBody()
+    </main>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Drawing Tool Application</p>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

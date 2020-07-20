@@ -1,0 +1,9 @@
+﻿a {
+    text-decoration: none;
+    color: black;
+    &.btn{
+        border: 1px solid black;
+        border-radius: 2px;
+        padding: 2px 11px;
+    }
+}

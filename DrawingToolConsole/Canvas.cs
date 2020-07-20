@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace DrawingToolConsole
 {
@@ -14,14 +15,14 @@ namespace DrawingToolConsole
 
         private int Width { get; set; }
 
-        private Queue<Position> PositionToStartValidate { get; set; }
-
+        private Queue<Point> PositionToStartValidate { get; set; }
+    
         private static int[] PosiblePositionsInY = { -1, 0, 0, 1 };
         private static int[] PosiblePositionsInX = { 0, -1, 1, 0 };
 
         public Canvas(int x, int y)
         {
-            this.Width = x + 1;
+            this.Width = x + 2;
             this.Height = y + 2;
             this.MainCanvas = new string[this.Height, this.Width];
             this.Visited = new bool[this.Height, this.Width];
@@ -79,29 +80,27 @@ namespace DrawingToolConsole
 
         public void WriteRectangleCanvas(int x1, int y1, int x2, int y2)
         {
-            x1 = x1 - 1;
-            x2 = x2 - 1;
-            for (int i = 0; i < this.MainCanvas.GetLength(0); i++)
+            for (int y = 0; y < this.MainCanvas.GetLength(0); y++)
             {
                 var lineBuilder = new StringBuilder();
-                for (int j = 0; j < this.MainCanvas.GetLength(1); j++)
+                for (int x = 0; x < this.MainCanvas.GetLength(1); x++)
                 {
                     var textToAppend = " ";
-                    if (!string.IsNullOrEmpty(this.MainCanvas[i, j]))
+                    if (!string.IsNullOrEmpty(this.MainCanvas[y, x]))
                     {
-                        textToAppend = this.MainCanvas[i, j];
+                        textToAppend = this.MainCanvas[y, x];
                     }
-                    else if (i >= y1 || i <= y2)
+                    else if (y >= y1 || y <= y2)
                     {
-                        if ((i == y1 || i == y2) && j >= x1 && j <= x2)
+                        if ((y == y1 || y == y2) && x >= x1 && x <= x2)
                         {
-                            this.MainCanvas[i, j] = "x";
-                            textToAppend = this.MainCanvas[i, j];
+                            this.MainCanvas[y, x] = "x";
+                            textToAppend = this.MainCanvas[y, x];
                         }
-                        else if (i > y1 && i < y2 && (j == x1 || j == x2))
+                        else if (y > y1 && y < y2 && (x == x1 || x == x2))
                         {
-                            this.MainCanvas[i, j] = "x";
-                            textToAppend = this.MainCanvas[i, j];
+                            this.MainCanvas[y, x] = "x";
+                            textToAppend = this.MainCanvas[y, x];
                         }
                     }
 
@@ -111,30 +110,30 @@ namespace DrawingToolConsole
             }
         }
 
-        private bool MarkAsValid(string[,] canvas, int x, int y, string character)
+        private bool MarkAsValid(int x, int y, string character)
         {
-            var result = x >= 0 && x < this.Width && y >= 0 && y < this.Height && string.IsNullOrEmpty(canvas[y, x]) && !this.Visited[y, x];
+            var result = x >= 0 && x < this.Width && y >= 0 && y < this.Height && string.IsNullOrEmpty(this.MainCanvas[y, x]) && !this.Visited[y, x];
             if (result)
             {
-                canvas[y, x] = character;
+                this.MainCanvas[y, x] = character;
             }
             return result;
         }
 
-        public string[,] FillSpaces(int x1, int y1)
+        public void FillSpaces(int x1, int y1)
         {
-            this.PositionToStartValidate = new Queue<Position>();
-            this.PositionToStartValidate.Enqueue(new Position { X = x1, Y = y1 });
+            this.PositionToStartValidate = new Queue<Point>();
+            this.PositionToStartValidate.Enqueue(new Point { X = x1, Y = y1 });
 
             while (this.PositionToStartValidate.Any())
             {
                 var next = this.PositionToStartValidate.Dequeue();
                 for (int i = 0; i < 4; i++)
                 {
-                    if (MarkAsValid(this.MainCanvas, next.X + PosiblePositionsInX[i], next.Y + PosiblePositionsInY[i], "0"))
+                    if (MarkAsValid(next.X + PosiblePositionsInX[i], next.Y + PosiblePositionsInY[i], "O"))
                     {
                         this.Visited[next.Y + PosiblePositionsInY[i], next.X + PosiblePositionsInX[i]] = true;
-                        this.PositionToStartValidate.Enqueue(new Position
+                        this.PositionToStartValidate.Enqueue(new Point
                         {
                             X = next.X + PosiblePositionsInX[i],
                             Y = next.Y + PosiblePositionsInY[i]
@@ -156,8 +155,6 @@ namespace DrawingToolConsole
                 }
                 Console.WriteLine(lineBuilder.ToString());
             }
-
-            return this.MainCanvas;
         }
     }
 }

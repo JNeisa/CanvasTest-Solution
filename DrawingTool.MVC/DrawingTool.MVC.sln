@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawingTool.MVC", "DrawingTool.MVC.csproj", "{C18DFDA2-BFBF-4A92-B874-2FED6D1C1A0E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{A1F709AB-D763-45DC-9A01-55FC8A3364F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DrawingTool.Test", "..\DrawingTool.Test\DrawingTool.Test.csproj", "{F989FB2C-79A4-4BBA-B4CB-46AA9478C6DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C18DFDA2-BFBF-4A92-B874-2FED6D1C1A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18DFDA2-BFBF-4A92-B874-2FED6D1C1A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18DFDA2-BFBF-4A92-B874-2FED6D1C1A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18DFDA2-BFBF-4A92-B874-2FED6D1C1A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F989FB2C-79A4-4BBA-B4CB-46AA9478C6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F989FB2C-79A4-4BBA-B4CB-46AA9478C6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F989FB2C-79A4-4BBA-B4CB-46AA9478C6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F989FB2C-79A4-4BBA-B4CB-46AA9478C6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F989FB2C-79A4-4BBA-B4CB-46AA9478C6DD} = {A1F709AB-D763-45DC-9A01-55FC8A3364F0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F45EEEBA-C54D-4B6E-ACB3-7C072963A139}
+	EndGlobalSection
+EndGlobal

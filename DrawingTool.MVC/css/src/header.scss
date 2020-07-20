@@ -1,0 +1,16 @@
+﻿header {
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px;
+        background: #ece8e8;
+
+        .navbar-links {
+            ul li {
+                display: inline-block;
+            }
+        }
+    }
+}
